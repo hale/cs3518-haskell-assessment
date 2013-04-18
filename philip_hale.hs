@@ -121,6 +121,9 @@ once list n
   -    "Deriving" to make sure that the marks in a list can be printed (i.e.
   -    "shown"). (This will become relevant in part 2 of this question.)
   -}
+data Mark = X | O deriving (Show)
+data Board = Board [[Mark]] deriving (Show)
+
 
 
  {- 2. [25 points] Write a function move which, given any board (represented as
