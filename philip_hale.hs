@@ -16,6 +16,11 @@
  -    Main> member "a" []
  -    False
  -
+ -    Main> member "" [""]
+ -    True
+ -
+ -    Limitations: due to type definition, does not work for integers. E.g.
+ -
  -    Main> member 998 [1..10000]
  -    <exception thrown due to type definition>
  -}
@@ -35,7 +40,10 @@ member x (y:ys)
  -    Main> getelt 3 [1,2,3,4,5]
  -    3
  -}
-getelt :: Int -> [x] -> y
+getelt :: Int -> [x] -> x
 getelt x [] = error "List is empty"
+getelt x y
+  | x > length y || x < 1 = error "Index out of bounds"
+  | otherwise = last ( take x y )
 
 
