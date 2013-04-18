@@ -1,9 +1,12 @@
+import Data.List
 {-
  -Title: CS3518 Haskell Assignment 2012-13
  -Due: 19 April 2013, 12 noon
  -Author: Philip Hale
  -ID: 50907446
  -}
+
+{- EXERCISE 1: LIST PROCESSING -}
 
 {-
  - 1. [10 points] Write a function member which, given a string and a list of
@@ -75,4 +78,29 @@ combineWithEach n (x:xs) =
   f x  : combineWithEach n xs
   where f x = (n+x)*(n-x)
 
+{-
+ - 5. [15 points] Write a function once which, given a list of Integers and an
+ -    Integer n, returns a Boolean indicating whether n occurs exactly once in
+ -    the list. E.g.
+ -
+ -    Main>  once [2,3,2,4] 2
+ -    False
+ -
+ -    Main> once [1..100] 2
+ -    True
+ -
+ -    Main> once [negate 2, 3, -2] (negate 2)
+ -
+ -    This function first checks that the element occurs in the list.  If it
+ -    is, the element is removed from the list and the check is performed again.
+ -    If it's still in the list, it's a duplicate element.  If not, the
+ -    removed element must be unique in the list. It does not work on infinite
+ -    lists.
+ -}
+once :: [Int] -> Int -> Bool
+once list n
+  | length list == 0 = error "List is empty"
+  | n `notElem` list = False
+  | otherwise = n `notElem` (delete n list)
 
+{- EXERCISE 2: NOUGHTS AND CROSSES -}
