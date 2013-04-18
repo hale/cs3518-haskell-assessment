@@ -104,3 +104,29 @@ once list n
   | otherwise = n `notElem` (delete n list)
 
 {- EXERCISE 2: NOUGHTS AND CROSSES -}
+
+{-
+ - For this exercise, we will represent the state of the board of a noughts and
+ - crosses game using lists of lists. We will allow the board to be of any size
+ - (and there is no need for you to guarantee that all rows and columns have the
+ - same length). The outer level list has elements corresponding to the rows of
+ - the board, and each row is represented by the list of marks in it ("O", "X"
+ - or empty).
+ -}
+
+ {-
+  - 1. [10 points] Create an example of such a board, calling it "board"
+  -    Declare it and its type, and any other type definitions you need. We
+  -    suggest that you use an algebraic type ("Data = "), and that you use
+  -    "Deriving" to make sure that the marks in a list can be printed (i.e.
+  -    "shown"). (This will become relevant in part 2 of this question.)
+  -}
+
+
+ {- 2. [25 points] Write a function move which, given any board (represented as
+  -    above), the number of a row, the number of a column and a mark, returns a
+  -    new board which is the same as the original one, except that the
+  -    specified mark appears in the location identified by the row and column
+  -    numbers. Test your function by applying it to the board that you defined
+  -    in Part 1 of this question. Do not use the Haskell built-in function !!
+  -}
