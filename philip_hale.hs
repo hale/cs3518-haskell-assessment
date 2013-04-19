@@ -121,8 +121,9 @@ once list n
   -    "Deriving" to make sure that the marks in a list can be printed (i.e.
   -    "shown"). (This will become relevant in part 2 of this question.)
   -}
-data Mark = X | O deriving (Show)
-data Board = Board [[Mark]] deriving (Show)
+data Mark = X | O | Free deriving (Show)
+{-data Board = Board [[Mark]] deriving (Show)-}
+type Board = [[Mark]]
 
 
 
@@ -132,4 +133,14 @@ data Board = Board [[Mark]] deriving (Show)
   -    specified mark appears in the location identified by the row and column
   -    numbers. Test your function by applying it to the board that you defined
   -    in Part 1 of this question. Do not use the Haskell built-in function !!
+  -
+  -    Main> let b = [[X,X,X],[O,O,O],[Free,Free,Free]]
+  -    Main> move b 2 2 Free
+  -    [[X,X,X],[O,Free,O],[Free,Free,Free]]
   -}
+
+move :: Board -> Int -> Int -> Mark -> Board
+move board x y mark
+  | x < 1 || y < 1 = error "Index out of bounds."
+  | otherwise = setelt x board (setelt y column mark)
+  where column = getelt x board
